@@ -1,13 +1,12 @@
 plugins {
     java
     id("xyz.jpenilla.run-paper") version "2.3.1"
-    id("com.gradleup.shadow") version "8.3.0"
 }
 
 group = "dev.igalaxy.voicechatinteraction"
-version = "1.3.1"
+version = "1.3.2"
 description = "Detect voice chat with the sculk sensor"
-val minecraftVersion = "1.21.10"
+val minecraftVersion = "1.21.11"
 
 java {
     toolchain.languageVersion.set(JavaLanguageVersion.of(21))
@@ -22,8 +21,8 @@ repositories {
 }
 
 dependencies {
-    compileOnly("io.papermc.paper:paper-api:1.21.10-R0.1-SNAPSHOT")
-    implementation("de.maxhenkel.voicechat:voicechat-api:2.4.0")
+    compileOnly("io.papermc.paper:paper-api:1.21.11-R0.1-SNAPSHOT")
+    compileOnly("de.maxhenkel.voicechat:voicechat-api:2.6.0")
 }
 
 tasks {
@@ -31,12 +30,11 @@ tasks {
         // Configure the Minecraft version for our task.
         // This is the only required configuration besides applying the plugin.
         // Your plugin's jar (or shadowJar if present) will be used automatically.
-        minecraftVersion("1.21.10")
+        minecraftVersion("1.21.11")
     }
 }
 
 tasks.build {
-    dependsOn("shadowJar")
 }
 
 tasks.processResources {
